@@ -34,4 +34,11 @@ url을 붙일 수 있는, 해당 페이지로 바로 갈 수 있고 북마크해
 ## FireBase
 주소 : https://console.firebase.google.com/
 
+## Cloudinary
+이미지 업로드 및 업로드된 이미지 resizing 가능   
+주소 : https://cloudinary.com/   
+주의사항: 회원가입 할때 Select a product 에서 Programmable Media 를 선택해야 파일 업로드 기능을 사용할 수 있다!.
+공식문서 : https://cloudinary.com/documentation/upload_images#uploading_with_a_direct_call_to_the_rest_api
+
+
 # 출저 : dream coding academy
