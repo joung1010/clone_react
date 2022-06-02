@@ -1,0 +1,28 @@
+@value makerBlack,makerWhite,makerGreen from '/src/common/color.css';
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.login {
+    width: 30rem;
+}
+.body {
+    display: flex;
+    flex-direction: column;
+    background-color: makerWhite;
+    align-items: center;
+    height: 12rem;
+}
+.button {
+    width: 80%;
+    height: 2rem;
+    margin: 0.3rem 0;
+    outline: none;
+    border: 1px solid makerGreen;
+    border-radius: 30px;
+}
+.button:hover {
+    cursor: pointer;
+}

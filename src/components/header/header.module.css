@@ -1,0 +1,34 @@
+@value makerGreen,makerWhite from '/src/common/color.css';
+
+.header {
+    display: flex;
+    background-color:makerGreen ;
+    color: makerWhite;
+    justify-content: center;
+    ;
+}
+.logo {
+    text-align: center;
+    flex: 1 1 80%;
+}
+.title {
+    margin: 0;
+}
+.logout {
+    padding: 0.2rem 0.4rem;
+    flex: 1 1 10%;
+    text-align: right;
+}
+.hide {
+    display: none;
+}
+.button {
+    color: makerWhite;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid makerWhite;
+    height: 2rem;
+}
+.button:hover {
+    cursor: pointer;
+}
