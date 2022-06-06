@@ -5,6 +5,7 @@
     background-color: makerGreen;
     line-height: 5rem;
     height: 5rem;
+    width: 100%;
 }
 .title {
     text-align: center;

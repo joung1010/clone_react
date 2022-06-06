@@ -1,4 +1,4 @@
-import './app.css';
+import styles from './app.module.css'
 import Login from "./components/login/login";
 import {useState} from "react";
 
@@ -14,9 +14,9 @@ function App({authService}) {
   }
 
     return (
-    <>
+    <div className={styles.app}>
       <Login onHandleLogin={login}/>
-    </>
+    </div>
   );
 }
 

@@ -1,28 +1,40 @@
-@value makerBlack,makerWhite,makerGreen from '/src/common/color.css';
-.container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+@value makerBlack, makerWhite, makerGreen,makerLightPink from '/src/common/color.css';
+
 .login {
-    width: 30rem;
-}
-.body {
     display: flex;
     flex-direction: column;
+    width: 35rem;
     background-color: makerWhite;
-    align-items: center;
-    height: 12rem;
+    justify-content: center;
 }
+
+.body {
+    text-align: center;
+    color: makerBlack;
+}
+
+.list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.item {
+    margin-bottom: 0.3rem;
+}
+
 .button {
-    width: 80%;
-    height: 2rem;
-    margin: 0.3rem 0;
-    outline: none;
-    border: 1px solid makerGreen;
+    width: 100%;
     border-radius: 30px;
+    height: 3rem;
+    border: 1px solid makerGreen;
+    color: makerGreen;
+    background-color: transparent;
+    outline: 0;
+    cursor: pointer;
 }
 .button:hover {
-    cursor: pointer;
+    background-color: makerLightPink;
 }
