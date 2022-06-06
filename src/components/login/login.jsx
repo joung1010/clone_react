@@ -1,6 +1,5 @@
-import React, {useRef} from 'react';
-import LoginHeader from "../header/header";
-import LoginFooter from "../footer/footer";
+import Header from "../header/header";
+import Footer from "../footer/footer";
 import styles from './login.module.css';
 
 const Login = ({onHandleLogin}) => {
@@ -10,7 +9,7 @@ const Login = ({onHandleLogin}) => {
 
     return (
         <section className={styles.login}>
-            <LoginHeader/>
+            <Header/>
             <section className={styles.body}>
                 <h1>Login</h1>
                 <ul className={styles.list}>
@@ -22,7 +21,7 @@ const Login = ({onHandleLogin}) => {
                     </li>
                 </ul>
             </section>
-            <LoginFooter/>
+            <Footer/>
         </section>
     );
 }

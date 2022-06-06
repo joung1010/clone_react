@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './header.module.css';
 
-const LoginHeader = ({logOut}) => (
+const Header = ({logOut}) => (
     <header className={styles.header}>
         {logOut && (<button className={styles.logout}>Logout</button>)}
         <img className={styles.logo} src="images/logo.png" alt=""/>
@@ -9,4 +9,4 @@ const LoginHeader = ({logOut}) => (
     </header>
 );
 
-export default LoginHeader;
+export default Header;
