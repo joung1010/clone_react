@@ -7,19 +7,20 @@ class AuthService {
         this.githubProvider = new GithubAuthProvider();
     }
 
-    getProvier(target) {
+    getProvider(target) {
         switch (target) {
             case "Google":
                 return this.googleProvider;
-                break;
             case "Github":
                 return this.githubProvider;
-                break;
+            default:
+                throw new Error(`not supported provider: ${target}`);
         }
     }
 
-    login(provier) {
-       return signInWithPopup(this.auth,provier);
+    login(providerName) {
+        const provider = this.getProvider(providerName);
+       return signInWithPopup(this.auth,provider);
     }
 
     logout() {

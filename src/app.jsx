@@ -6,11 +6,8 @@ function App({authService}) {
   const [user,setUser] = useState(null);
 
   const login = (type) => {
-    const provider = authService.getProvier(type);
-    console.log(provider);
-    let userCredentialPromise = authService.login(provider);
-    console.log(userCredentialPromise);
-
+      authService.login(type)
+          .then(result => setUser(result.user));
   }
 
     return (
