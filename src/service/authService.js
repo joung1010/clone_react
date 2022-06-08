@@ -1,5 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider,GithubAuthProvider,signOut  } from "firebase/auth";
-
+import { getAuth, signInWithPopup, GoogleAuthProvider,GithubAuthProvider,signOut,onAuthStateChanged   } from "firebase/auth";
 class AuthService {
     constructor(firebaseApp) {
         this.auth = getAuth(firebaseApp);
@@ -24,7 +23,15 @@ class AuthService {
     }
 
     logout() {
-        return signOut(this.auth);
+        const auth = getAuth();
+        return  signOut(auth);
+    }
+
+    onAuthStateChanged(moveMakeCard) {
+        const auth = getAuth();
+        onAuthStateChanged(auth,(user)=>{
+            moveMakeCard(user);
+        });
     }
 
     getGithubProvider() {

@@ -2,18 +2,28 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 import styles from './login.module.css';
 import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
-const Login = ({onHandleLogin,logout}) => {
+const Login = ({authService}) => {
  const navigate = useNavigate();
 
+ const gotoCardMaker = (userId)=>{
+     navigate("/card",{state:{id:userId}})
+ };
+
     const login = (event) => {
-        onHandleLogin(event.target.textContent)
-            .then(()=>navigate('/card'));
+        authService.login(event.target.textContent)
+            .then((result)=> navigate("/card",result.user.uid));
     }
+    useEffect(()=>{
+        authService.onAuthStateChanged(user => {
+            user && gotoCardMaker(user.uid);
+        });
+    });
 
     return (
         <section className={styles.login}>
-            <Header logOut={logout}/>
+            <Header/>
             <section className={styles.body}>
                 <h1>Login</h1>
                 <ul className={styles.list}>

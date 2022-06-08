@@ -2,17 +2,11 @@ import React from 'react';
 import styles from './header.module.css';
 import {useNavigate} from "react-router-dom";
 
-const Header = ({logOut}) => {
-    const navigate = useNavigate();
-
-    const handleLogout = ()=>{
-        logOut();
-        navigate("/");
-    };
+const Header = ({logout}) => {
 
     return(
         <header className={styles.header}>
-            {logOut && (<button onClick={handleLogout}
+            {logout && (<button onClick={logout}
                                 className={styles.logout}>
                 Logout
             </button>)}

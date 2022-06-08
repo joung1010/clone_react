@@ -5,25 +5,13 @@ import {BrowserRouter, Route, Routes, useNavigate} from "react-router-dom";
 import Card from "./components/card/card";
 
 function App({authService}) {
-  const [user,setUser] = useState(null);
-
-  const login = (type) => {
-      return  authService.login(type)
-          .then(result => setUser(result.user));
-  }
-  const logout = ()=>{
-    authService.logout()
-        .then(()=>setUser(null));
-  };
 
     return (
     <div className={styles.app}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" exact element={<Login onHandleLogin={login}
-            logout={user && logout}
-          />}/>
-          <Route path="/card"  element={<Card logout={user && logout}/>}/>
+          <Route path="/" exact element={<Login authService={authService}/>}/>
+          <Route path="/card"  element={<Card authService={authService}/>}/>
         </Routes>
       </BrowserRouter>
     </div>
