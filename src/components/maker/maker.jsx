@@ -1,7 +1,10 @@
 import React from 'react';
+import styles from './maker.module.css';
 
 const Maker = (props) => (
-    <h1>maker</h1>
+   <section className={styles.maker}>
+       <h1 className={styles.title}>maker</h1>
+   </section>
 );
 
 export default Maker;

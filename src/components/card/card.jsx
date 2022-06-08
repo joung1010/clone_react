@@ -11,24 +11,20 @@ const Card = ({authService}) => {
 
     const handleLogout = () => {
         authService.logout()
-            .then(()=> navigate("/"));
+            .then(() => navigate("/"));
     };
     useEffect(() => {
-        authService.onAuthStateChanged((user)=>{
+        authService.onAuthStateChanged((user) => {
             user || navigate("/");
         });
     });
 
-    return(
+    return (
         <div className={styles.card}>
             <Header logout={handleLogout}/>
             <section className={styles.list}>
-                <div className={styles.maker}>
-                    <Maker/>
-                </div>
-               <div className={styles.preview}>
-                   <Preview/>
-               </div>
+                <Maker/>
+                <Preview/>
             </section>
             <Footer/>
         </div>

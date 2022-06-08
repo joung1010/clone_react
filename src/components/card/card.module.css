@@ -3,21 +3,17 @@
 .card {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .list {
-    height: 100%;
     background-color: makerWhite;
+    flex: 1;
     display: flex;
 }
-.maker {
-    flex: 1 1 50%;
-}
-.preview {
-    flex: 1 1 50%;
-}
-@media screen and (max-width: 62rem){
+
+@media screen and (max-width: mediaQuery){
     .list {
-        display: flex;
         flex-direction: column;
     }
 }
