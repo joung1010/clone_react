@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import Maker from "../maker/maker";
 import Preview from "../preview/preview";
 
-const Card = ({authService}) => {
+const Card = ({authService,cards}) => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -23,7 +23,7 @@ const Card = ({authService}) => {
         <div className={styles.card}>
             <Header logout={handleLogout}/>
             <section className={styles.list}>
-                <Maker/>
+                <Maker cards={cards}/>
                 <Preview/>
             </section>
             <Footer/>
