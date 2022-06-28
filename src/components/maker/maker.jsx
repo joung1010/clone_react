@@ -5,13 +5,13 @@ import CardForm from "../cardForm/cardForm";
 const Maker = ({cards}) => (
    <section className={styles.maker}>
        <h1 className={styles.title}>maker</h1>
-        <ul className={styles.cards}>
+        <div className={styles.cards}>
             {
                 cards.map(card=>(
                     <CardForm card={card}/>
                 ))
             }
-        </ul>
+        </div>
    </section>
 );
 

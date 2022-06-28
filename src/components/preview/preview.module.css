@@ -8,3 +8,10 @@
     color: makerGreen;
     margin-bottom: 1em;
 }
+.cardItems {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+}

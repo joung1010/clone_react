@@ -24,7 +24,7 @@ const Card = ({authService,cards}) => {
             <Header logout={handleLogout}/>
             <section className={styles.list}>
                 <Maker cards={cards}/>
-                <Preview/>
+                <Preview cards={cards}/>
             </section>
             <Footer/>
         </div>

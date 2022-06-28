@@ -28,7 +28,7 @@ function App({authService}) {
             role:'Software Engineer',
             email : 'Chris@user.com',
             description:'',
-            color:'Colorful',
+            color:'Light',
         },
     ]);
     return (
