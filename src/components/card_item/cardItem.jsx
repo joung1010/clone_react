@@ -1,33 +1,36 @@
 import React from 'react';
 import styles from './cardItem.module.css';
 
+const DEFAULT_IMG = 'images/default_logo.png'
 const CardItem = ({card}) => {
-    const getColor = ({color})=>{
-        switch (color) {
-            case 'Dark':
-                return styles.dark;
-            case 'Light':
-                return styles.light;
-            case 'Colorful':
-                return styles.colorful;
-        }
-    }
-const color = getColor(card);
+
+    const {name, company, role, email, description, color, fileName, fileURL} = card;
+    const url = fileURL || DEFAULT_IMG;
     return(
-        <div className={`${styles.card} ${color}`}>
-            <div className={styles.avatar}>
-                <img className={styles.img} src="images/avator.jpg" alt={card.name}/>
-            </div>
+        <li className={`${styles.card} ${getColor(color)}`}>
+            <img className={styles.avatar} src={url} alt={fileName}/>
             <div className={styles.userInfo}>
-                <h1 className={styles.name}>{card.name}</h1>
-                <p className={styles.company}>{card.company}</p>
-                <div className={styles.line}/>
-                <p className={styles.role}>{card.role}</p>
-                <p className={styles.email}>{card.email}</p>
-                <p className={styles.description}>{`"${card.description}"`}</p>
+                <h1 className={styles.name}>{name}</h1>
+                <p className={styles.company}>{company}</p>
+                <p className={styles.role}>{role}</p>
+                <p className={styles.email}>{email}</p>
+                <p className={styles.description}>{`"${description}"`}</p>
             </div>
-        </div>
+        </li>
     );
+}
+
+function getColor(color){
+    switch (color) {
+        case 'Dark':
+            return styles.dark;
+        case 'Light':
+            return styles.light;
+        case 'Colorful':
+            return styles.colorful;
+        default:
+            throw new Error(`${color} is not define`);
+    }
 }
 
 export default CardItem;
