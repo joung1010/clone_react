@@ -25,11 +25,9 @@
 .inputFile {
     text-align: center;
     background-color: makerLightPink;
+    cursor: pointer;
 }
-.button {
-    background-color: makerGreen;
-    color: makerWhite;
-}
+
 .input ,
 .select {
     flex: 1 1 30%;
