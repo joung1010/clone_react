@@ -5,7 +5,7 @@ import {BrowserRouter, Route, Routes, useNavigate} from "react-router-dom";
 import Card from "./components/card/card";
 
 function App({authService}) {
-
+  
     return (
     <div className={styles.app}>
       <BrowserRouter>
