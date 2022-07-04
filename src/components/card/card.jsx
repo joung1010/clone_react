@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import styles from './card.module.css';
@@ -44,6 +44,11 @@ const Card = ({authService}) => {
             fileURL:null,
         },
     ]);
+    const addCard = useCallback( (card) => {
+        const cardItems = [...cards];
+        cardItems.push(card);
+        setCards(cardItems);
+    },[cards]);
     const handleLogout = () => {
         authService.logout()
             .then(() => navigate("/"));
@@ -58,7 +63,9 @@ const Card = ({authService}) => {
         <div className={styles.card}>
             <Header logout={handleLogout}/>
             <section className={styles.list}>
-                <Maker cards={cards}/>
+                <Maker cards={cards}
+                        addCard={addCard}
+                />
                 <Preview cards={cards}/>
             </section>
             <Footer/>

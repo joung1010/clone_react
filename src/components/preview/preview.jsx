@@ -8,7 +8,7 @@ const Preview = ({cards}) => (
         <ul className={styles.cardItems}>
             {
                cards.map(card => (
-                   <CardItem card={card}/>
+                   <CardItem card={card} key={card.id}/>
                ))
             }
         </ul>
