@@ -45,8 +45,7 @@ const Card = ({authService}) => {
         },
     ]);
     const addCard = useCallback( (card) => {
-        const cardItems = [...cards];
-        cardItems.push(card);
+        const cardItems = [...cards,card];
         setCards(cardItems);
     },[cards]);
     const handleLogout = () => {

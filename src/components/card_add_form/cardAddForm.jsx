@@ -4,33 +4,41 @@ import ImageFileInput from "../image_file_input/imageFileInput";
 import Button from "../button/button";
 
 const CardAddForm = ({addCard}) => {
-    const formRef = React.createRef();
-
+    const formRef = useRef();
+    const nameRef = useRef();
+    const companyRef = useRef();
+    const colorRef = useRef();
+    const roleRef = useRef();
+    const emailRef = useRef();
+    const descriptionRef = useRef();
 
     const onsubmit = (event) =>{
         event.preventDefault();
-        console.log([...formRef.current.children]);
-        console.log(formRef.current.children[2].value);
-        const addItem = {id:Date.now(), };
-        [...formRef.current.children].forEach(item => {
-           const {value,name} = item;
-           addItem[`${name}`] = value;
-        });
-        addCard(addItem);
+        const card = {
+            id : Date.now(),
+            form: formRef.current.value || '',
+            name: nameRef.current.value || '',
+            company: companyRef.current.value || '',
+            color: colorRef.current.value ,
+            role: roleRef.current.value || '',
+            email: emailRef.current.value || '',
+            description: descriptionRef.current.value || '',
+        };
+        addCard(card);
         formRef.current.reset();
     }
     return(
         <form ref={formRef} className={styles.cardForm}>
-            <input className={styles.input} type="text" name="name" placeholder="Name"/>
-            <input className={styles.input} type="text" name="company"  placeholder="Company"/>
-            <select className={styles.select} name="color">
+            <input ref={nameRef} className={styles.input} type="text" name="name" placeholder="Name"/>
+            <input ref={companyRef} className={styles.input} type="text" name="company"  placeholder="Company"/>
+            <select ref={colorRef} className={styles.select} name="color">
                 <option value="Light">Light</option>
                 <option value="Dark">Dark</option>
                 <option value="Colorful">Colorful</option>
             </select>
-            <input type="text" className={styles.input}  name="role" placeholder="Title"/>
-            <input type="text" className={styles.input} name="email"  placeholder="Email"/>
-            <textarea  className={styles.textarea} name="description" placeholder="Message"/>
+            <input ref={roleRef} type="text" className={styles.input}  name="role" placeholder="Title"/>
+            <input ref={emailRef} type="text" className={styles.input} name="email"  placeholder="Email"/>
+            <textarea ref={descriptionRef}  className={styles.textarea} name="description" placeholder="Message"/>
             <div className={styles.inputFile}>
                 <ImageFileInput/>
             </div>
