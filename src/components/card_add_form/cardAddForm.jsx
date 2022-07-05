@@ -23,6 +23,8 @@ const CardAddForm = ({addCard}) => {
             role: roleRef.current.value || '',
             email: emailRef.current.value || '',
             description: descriptionRef.current.value || '',
+            fileName : null,
+            fileURL:null,
         };
         addCard(card);
         formRef.current.reset();

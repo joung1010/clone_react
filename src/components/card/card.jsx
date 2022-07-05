@@ -16,7 +16,7 @@ const Card = ({authService}) => {
             role:'Software Engineer',
             email : 'joung4342@gmail.com',
             description:'go for it',
-            color:'Dark',
+            color:'Light',
             fileName :'mason',
             fileURL:null
         },
@@ -48,6 +48,22 @@ const Card = ({authService}) => {
         const cardItems = [...cards,card];
         setCards(cardItems);
     },[cards]);
+
+    const deleteCard = useCallback(({id}) => {
+        const cardItemn = [...cards].filter(card => card.id !== id);
+        setCards(cardItemn);
+    },[cards]);
+
+    const changeCard = useCallback( (card) => {
+        const cardItemn = [...cards].map(item => {
+            if (item.id === card.id) {
+                return  {...card};
+            }
+            return item;
+        });
+        setCards(cardItemn);
+    },[cards]);
+
     const handleLogout = () => {
         authService.logout()
             .then(() => navigate("/"));
@@ -64,6 +80,8 @@ const Card = ({authService}) => {
             <section className={styles.list}>
                 <Maker cards={cards}
                         addCard={addCard}
+                        deleteCard={deleteCard}
+                       changeCard={changeCard}
                 />
                 <Preview cards={cards}/>
             </section>
