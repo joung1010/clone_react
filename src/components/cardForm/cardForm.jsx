@@ -4,43 +4,34 @@ import Button from "../button/button";
 import ImageFileInput from "../image_file_input/imageFileInput";
 
 const CardForm = ({card,deleteCard,changeCard}) => {
-    const nameRef = useRef();
-    const companyRef = useRef();
-    const colorRef = useRef();
-    const roleRef = useRef();
-    const emailRef = useRef();
-    const descriptionRef = useRef();
+
 
     const {name, company, role, email, description, color, fileName, fileURL,id} = card;
     const onsubmit = ()=>{
         deleteCard(card);
     }
-    const onChange = () => {
-        const card = {
-            id
-            , name : nameRef.current.value || ''
-            , company : companyRef.current.value || ''
-            , color : colorRef.current.value
-            , role : roleRef.current.value || ''
-            , email : emailRef.current.value || ''
-            , description : descriptionRef.current.value || '',
-            fileName : null,
-            fileURL:null,
-        };
-        changeCard(card);
+    const onChange = (event) => {
+        event.preventDefault();
+        if (event.currentTarget == null) {
+            return;
+        }
+        changeCard({
+            ...card,
+            [event.currentTarget.name]: event.currentTarget.value,
+        });
     }
     return(
         <form className={styles.cardForm}>
-            <input ref={nameRef} className={styles.input} type="text" value={name} placeholder="Name" onChange={onChange}/>
-            <input ref={companyRef} className={styles.input} type="text" value={company} placeholder="Company" onChange={onChange}/>
-            <select ref={colorRef} className={styles.select} value={color} onChange={onChange}>
+            <input  className={styles.input} type="text" name="name" value={name} placeholder="Name" onChange={onChange}/>
+            <input  className={styles.input} type="text" name="company" value={company} placeholder="Company" onChange={onChange}/>
+            <select  className={styles.select} value={color} name="color" onChange={onChange}>
                 <option value="Light">Light</option>
                 <option value="Dark">Dark</option>
                 <option value="Colorful">Colorful</option>
             </select>
-            <input ref={roleRef} type="text" className={styles.input} value={role} placeholder="Title" onChange={onChange}/>
-            <input ref={emailRef} type="text" className={styles.input} value={email} placeholder="Email" onChange={onChange}/>
-            <textarea ref={descriptionRef} value={description} className={styles.textarea} placeholder="Message" onChange={onChange}/>
+            <input  type="text" className={styles.input} value={role} name="role" placeholder="Title" onChange={onChange}/>
+            <input  type="text" className={styles.input} value={email} name="email" placeholder="Email" onChange={onChange}/>
+            <textarea  value={description} className={styles.textarea} name="description" placeholder="Message" onChange={onChange}/>
            {/* <label for="fileUplod" className={styles.inputFile}>{card.name}</label>
             <input type="file" id="fileUplod" style={{display:"none"}} />*/}
             <div className={styles.inputFile}>

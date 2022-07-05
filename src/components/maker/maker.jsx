@@ -8,9 +8,9 @@ const Maker = ({cards,addCard,deleteCard,changeCard}) => (
        <h1 className={styles.title}>maker</h1>
         <div className={styles.cards}>
             {
-                cards.map(card=>(
-                    <CardForm card={card}
-                              key={card.id}
+                Object.keys(cards).map(key=>(
+                    <CardForm card={cards[key]}
+                              key={key}
                               deleteCard={deleteCard}
                               changeCard={changeCard}
                     />

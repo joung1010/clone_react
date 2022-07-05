@@ -8,8 +8,8 @@ import Preview from "../preview/preview";
 
 const Card = ({authService}) => {
     const navigate = useNavigate();
-    const [cards,setCards] = useState([
-        {
+    const [cards,setCards] = useState({
+        '1': {
             id:'1',
             name:'Mason',
             company:'Quintet Systems',
@@ -20,7 +20,7 @@ const Card = ({authService}) => {
             fileName :'mason',
             fileURL:null
         },
-        {
+        '2': {
             id:'2',
             name:'Bob',
             company:'User',
@@ -32,7 +32,7 @@ const Card = ({authService}) => {
             fileName :'Bob',
             fileURL:null,
         },
-        {
+        '3': {
             id:'3',
             name:'Chris',
             company:'User',
@@ -43,25 +43,22 @@ const Card = ({authService}) => {
             fileName :'Chris',
             fileURL:null,
         },
-    ]);
-    const addCard = useCallback( (card) => {
-        const cardItems = [...cards,card];
-        setCards(cardItems);
-    },[cards]);
+    });
 
-    const deleteCard = useCallback(({id}) => {
-        const cardItemn = [...cards].filter(card => card.id !== id);
-        setCards(cardItemn);
-    },[cards]);
-
-    const changeCard = useCallback( (card) => {
-        const cardItemn = [...cards].map(item => {
-            if (item.id === card.id) {
-                return  {...card};
-            }
-            return item;
+    const deleteCard = useCallback((card) => {
+        setCards(cards => {
+            const cardItemn = {...cards}
+            delete cardItemn[card.id];
+            return cardItemn;
         });
-        setCards(cardItemn);
+    },[cards]);
+
+    const createOrUpdateCard = useCallback( (card) => {
+        setCards(cards => {
+            const cardItemn = {...cards}
+            cardItemn[card.id] = card;
+            return cardItemn;
+        });
     },[cards]);
 
     const handleLogout = () => {
@@ -79,9 +76,9 @@ const Card = ({authService}) => {
             <Header logout={handleLogout}/>
             <section className={styles.list}>
                 <Maker cards={cards}
-                        addCard={addCard}
+                        addCard={createOrUpdateCard}
                         deleteCard={deleteCard}
-                       changeCard={changeCard}
+                       changeCard={createOrUpdateCard}
                 />
                 <Preview cards={cards}/>
             </section>
