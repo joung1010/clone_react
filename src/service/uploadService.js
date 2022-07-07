@@ -1,12 +1,15 @@
 
 class CldCustUploadLgRestApi  {
     constructor() {
-        this.cloudName = process.env["REACT_APP_CLOUDINARY_CLOUD_NAME "];
-        this.presetName = process.env["REACT_APP_CLOUDINARY_PRESET_NAME "];
-        this.postURL = process.env["REACT_APP_CLOUDINARY_POST_URL "];
+        this.cloudName = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME ;
+        this.presetName = process.env.REACT_APP_CLOUDINARY_PRESET_NAME ;
+        this.postURL = process.env.REACT_APP_CLOUDINARY_POST_URL ;
+        this.callBack = null;
     }
      processFile = async (e) => {
+        debugger;
         const file = e.target.files[0];
+        const fileName = file.name;
         const YOUR_CLOUD_NAME = this.cloudName;
          const YOUR_UNSIGNED_UPLOAD_PRESET = this.presetName;
         const POST_URL = this.postURL;
@@ -48,7 +51,7 @@ class CldCustUploadLgRestApi  {
             formdata.append("file", piece);
             formdata.append("cloud_name", YOUR_CLOUD_NAME);
             formdata.append("upload_preset", YOUR_UNSIGNED_UPLOAD_PRESET);
-            formdata.append("public_id", "myChunkedFile2");
+            formdata.append("public_id", fileName);
 
             const xhr = new XMLHttpRequest();
             xhr.open("POST", POST_URL, false);
@@ -80,6 +83,10 @@ class CldCustUploadLgRestApi  {
 
         function noop() {}
     };
+
+    setCallBack(callback) {
+        this.callBack = callback;
+    }
 }
 
 export default CldCustUploadLgRestApi;

@@ -3,7 +3,7 @@ import styles from './maker.module.css';
 import CardForm from "../cardForm/cardForm";
 import CardAddForm from "../card_add_form/cardAddForm";
 
-const Maker = ({cards,addCard,deleteCard,changeCard}) => (
+const Maker = ({cards,addCard,deleteCard,changeCard,uploadService}) => (
    <section className={styles.maker}>
        <h1 className={styles.title}>maker</h1>
         <div className={styles.cards}>
@@ -13,10 +13,13 @@ const Maker = ({cards,addCard,deleteCard,changeCard}) => (
                               key={key}
                               deleteCard={deleteCard}
                               changeCard={changeCard}
+                              uploadService={uploadService}
                     />
                 ))
             }
-            <CardAddForm addCard={addCard}/>
+            <CardAddForm addCard={addCard}
+                         uploadService={uploadService}
+            />
         </div>
    </section>
 );

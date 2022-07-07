@@ -3,7 +3,7 @@ import styles from './cardForm.module.css';
 import Button from "../button/button";
 import ImageFileInput from "../image_file_input/imageFileInput";
 
-const CardForm = ({card,deleteCard,changeCard}) => {
+const CardForm = ({card,deleteCard,changeCard,uploadService}) => {
 
 
     const {name, company, role, email, description, color, fileName, fileURL,id} = card;
@@ -32,10 +32,10 @@ const CardForm = ({card,deleteCard,changeCard}) => {
             <input  type="text" className={styles.input} value={role} name="role" placeholder="Title" onChange={onChange}/>
             <input  type="text" className={styles.input} value={email} name="email" placeholder="Email" onChange={onChange}/>
             <textarea  value={description} className={styles.textarea} name="description" placeholder="Message" onChange={onChange}/>
-           {/* <label for="fileUplod" className={styles.inputFile}>{card.name}</label>
-            <input type="file" id="fileUplod" style={{display:"none"}} />*/}
             <div className={styles.inputFile}>
-                <ImageFileInput/>
+                <ImageFileInput fileName={fileName}
+                                uploadService={uploadService}
+                />
             </div>
             <Button name="Delete" onClick={onsubmit}/>
         </form>

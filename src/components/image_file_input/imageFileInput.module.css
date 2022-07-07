@@ -1,0 +1,5 @@
+@value makerLightPink from '../../common/color.css';
+.inputFile {
+    text-align: center;
+    background-color: makerLightPink;
+}
