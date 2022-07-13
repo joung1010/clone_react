@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import Maker from "../maker/maker";
 import Preview from "../preview/preview";
 
-const Card = ({authService,uploadService}) => {
+const Card = ({authService,FileInput}) => {
     const navigate = useNavigate();
     const [cards,setCards] = useState({
         '1': {
@@ -79,7 +79,7 @@ const Card = ({authService,uploadService}) => {
                         addCard={createOrUpdateCard}
                         deleteCard={deleteCard}
                        changeCard={createOrUpdateCard}
-                       uploadService={uploadService}
+                       FileInput={FileInput}
                 />
                 <Preview cards={cards}/>
             </section>
