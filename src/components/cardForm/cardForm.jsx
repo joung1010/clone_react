@@ -6,7 +6,7 @@ import ImageFileInput from "../image_file_input/imageFileInput";
 const CardForm = ({card,deleteCard,changeCard,FileInput}) => {
 
 
-    const {name, company, role, email, description, color, fileName, fileURL,id} = card;
+    const {name, company, role, email, description, color, fileName} = card;
     const onsubmit = ()=>{
         deleteCard(card);
     }
@@ -42,7 +42,7 @@ const CardForm = ({card,deleteCard,changeCard,FileInput}) => {
             <input  type="text" className={styles.input} value={email} name="email" placeholder="Email" onChange={onChange}/>
             <textarea  value={description} className={styles.textarea} name="description" placeholder="Message" onChange={onChange}/>
             <div className={styles.inputFile}>
-                <FileInput name={name} onHandleFileUpload={onHandleFileUpload}/>
+                <FileInput name={fileName} onHandleFileUpload={onHandleFileUpload}/>
             </div>
             <Button name="Delete" onClick={onsubmit}/>
         </form>
