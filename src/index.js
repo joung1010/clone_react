@@ -23,5 +23,5 @@ root.render(
     <App FileInput={FileInput}
         authService={authService}
     />
-  </React.StrictMode>
+  </React.StrictMode>  
 );
