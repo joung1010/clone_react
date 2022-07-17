@@ -27,5 +27,5 @@ root.render(
         authService={authService}
          database={database}
     />
-  </React.StrictMode>  
+  </React.StrictMode>   
 );
