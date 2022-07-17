@@ -7,18 +7,19 @@ class DatabaseService {
 
     writeCard(userId, card) {
         set(ref(this.database, `${userId}/cards/${card.id}`), {
-            card
+            ...card,
         });
     }
 
-    remoceCard(userId, card) {
+    removeCard(userId, card) {
         remove(ref(this.database, `${userId}/cards/${card.id}`));
     }
 
     async readCard(userId, setCarad) {
         const dbRef = ref(this.database);
-        const snapshop = await get(child(dbRef, `${userId}/cards`));
-        console.log(snapshop);
+        const snapshot = await get(child(dbRef, `${userId}/cards`));
+        const value = snapshot.val();
+        value && setCarad(value);
 
 
     }

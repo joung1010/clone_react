@@ -10,42 +10,7 @@ const Card = ({authService,FileInput,database}) => {
     const navigate = useNavigate();
     const state = useLocation().state;
     const [userId,setUserId] = useState(state.userId);
-    const [cards,setCards] = useState({
-        '1': {
-            id:'1',
-            name:'Mason',
-            company:'Quintet Systems',
-            role:'Software Engineer',
-            email : 'joung4342@gmail.com',
-            description:'go for it',
-            color:'Light',
-            fileName :'mason',
-            fileURL:null
-        },
-        '2': {
-            id:'2',
-            name:'Bob',
-            company:'User',
-            role:'Software Engineer',
-            email : 'bob@user.com',
-            description:'I love it',
-            color:'Dark',
-            imageURL:'null',
-            fileName :'Bob',
-            fileURL:null,
-        },
-        '3': {
-            id:'3',
-            name:'Chris',
-            company:'User',
-            role:'Software Engineer',
-            email : 'Chris@user.com',
-            description:'',
-            color:'Colorful',
-            fileName :'Chris',
-            fileURL:null,
-        },
-    });
+    const [cards,setCards] = useState({});
 
     const deleteCard = useCallback((card) => {
         setCards(cards => {
@@ -53,15 +18,16 @@ const Card = ({authService,FileInput,database}) => {
             delete cardItemn[card.id];
             return cardItemn;
         });
+        database.removeCard(userId,card);
     },[cards]);
 
     const createOrUpdateCard = useCallback( (card) => {
-        database.writeCard(userId,card);
         setCards(cards => {
             const cardItemn = {...cards}
             cardItemn[card.id] = card;
             return cardItemn;
         });
+        database.writeCard(userId,card);
     },[cards]);
 
     const handleLogout = () => {
@@ -72,8 +38,15 @@ const Card = ({authService,FileInput,database}) => {
         authService.onAuthStateChanged((user) => {
             user || navigate("/");
         });
-        database.readCard(userId);
     });
+    useEffect(() => {
+        if (!userId) {
+            return;
+        }
+        database.readCard(userId, (cards) => {
+            setCards(cards);
+        });
+    },[userId]);
 
     return (
         <div className={styles.card}>

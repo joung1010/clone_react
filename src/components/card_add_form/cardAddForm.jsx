@@ -21,15 +21,14 @@ const CardAddForm = ({addCard,FileInput}) => {
         event.preventDefault();
         const card = {
             id : Date.now(),
-            form: formRef.current.value || '',
             name: nameRef.current.value || '',
             company: companyRef.current.value || '',
             color: colorRef.current.value ,
             role: roleRef.current.value || '',
             email: emailRef.current.value || '',
             description: descriptionRef.current.value || '',
-            fileName : file.name,
-            fileURL: file.url,
+            fileName : file.name || '',
+            fileURL: file.url || '',
         };
         addCard(card);
         formRef.current.reset();

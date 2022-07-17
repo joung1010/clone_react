@@ -18,6 +18,7 @@ const uploadService = new UploadService(api);
 const FileInput = props => (
     <ImageFileInput {...props} uploadService={uploadService}/>
 );
+
 const database =new DatabaseService(app);
 
 root.render(
