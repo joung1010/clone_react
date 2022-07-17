@@ -2,12 +2,14 @@ import React, {useCallback, useEffect, useState} from 'react';
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import styles from './card.module.css';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import Maker from "../maker/maker";
 import Preview from "../preview/preview";
 
-const Card = ({authService,FileInput}) => {
+const Card = ({authService,FileInput,database}) => {
     const navigate = useNavigate();
+    const state = useLocation().state;
+    const [userId,setUserId] = useState(state.userId);
     const [cards,setCards] = useState({
         '1': {
             id:'1',
@@ -54,6 +56,7 @@ const Card = ({authService,FileInput}) => {
     },[cards]);
 
     const createOrUpdateCard = useCallback( (card) => {
+        database.writeCard(userId,card);
         setCards(cards => {
             const cardItemn = {...cards}
             cardItemn[card.id] = card;
@@ -69,6 +72,7 @@ const Card = ({authService,FileInput}) => {
         authService.onAuthStateChanged((user) => {
             user || navigate("/");
         });
+        database.readCard(userId);
     });
 
     return (

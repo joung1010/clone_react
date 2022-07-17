@@ -8,12 +8,12 @@ const Login = ({authService}) => {
  const navigate = useNavigate();
 
  const gotoCardMaker = (userId)=>{
-     navigate("/card",{state:{id:userId}})
+     navigate("/card",{state:{userId,}})
  };
 
     const login = (event) => {
         authService.login(event.target.textContent)
-            .then((result)=> navigate("/card",result.user.uid));
+            .then((result)=> gotoCardMaker(result.user.uid));
     }
     useEffect(()=>{
         authService.onAuthStateChanged(user => {

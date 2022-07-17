@@ -7,6 +7,7 @@ import app from './service/initializeApp'
 import UploadService from './service/uploadService'
 import axios from "axios";
 import ImageFileInput from "./components/image_file_input/imageFileInput";
+import DatabaseService from "./service/databaseService";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const authService = new AuthService(app);
@@ -17,11 +18,13 @@ const uploadService = new UploadService(api);
 const FileInput = props => (
     <ImageFileInput {...props} uploadService={uploadService}/>
 );
+const database =new DatabaseService(app);
 
 root.render(
   <React.StrictMode>
     <App FileInput={FileInput}
         authService={authService}
+         database={database}
     />
   </React.StrictMode>  
 );
