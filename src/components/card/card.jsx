@@ -36,7 +36,11 @@ const Card = ({authService,FileInput,database}) => {
     };
     useEffect(() => {
         authService.onAuthStateChanged((user) => {
-            user || navigate("/");
+            if (user) {
+                setUserId(user.uid);
+            } else {
+                navigate("/");
+            }
         });
     });
     useEffect(() => {

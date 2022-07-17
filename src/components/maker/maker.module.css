@@ -1,6 +1,7 @@
 @value makerGreen from '../../common/color.css';
 .maker {
     flex-basis: 50%;
+    overflow-y: auto;
 }
 .title {
     width: 100%;
