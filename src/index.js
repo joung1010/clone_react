@@ -20,7 +20,7 @@ const FileInput = props => (
 );
 
 const database =new DatabaseService(app);
-
+ 
 root.render(
   <React.StrictMode>
     <App FileInput={FileInput}
