@@ -1,4 +1,4 @@
-import {getDatabase, ref, set, remove, child, get} from "firebase/database";
+import {getDatabase, ref, set, remove,onValue , off} from "firebase/database";
 
 class DatabaseService {
     constructor(app) {
@@ -15,13 +15,12 @@ class DatabaseService {
         remove(ref(this.database, `${userId}/cards/${card.id}`));
     }
 
-    async readCard(userId, setCarad) {
-        const dbRef = ref(this.database);
-        const snapshot = await get(child(dbRef, `${userId}/cards`));
-        const value = snapshot.val();
-        value && setCarad(value);
-
-
+     readCard(userId, setCarad) {
+         const stopSync= onValue(ref(this.database, `${userId}/cards`), (snapshot => {
+             const value = snapshot.val();
+             value && setCarad(value);
+         }));
+         return () => stopSync();
     }
 
 }

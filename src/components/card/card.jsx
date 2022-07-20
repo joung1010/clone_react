@@ -43,13 +43,14 @@ const Card = ({authService,FileInput,database}) => {
             }
         });
     });
-    useEffect(() => {
+    useEffect( () => {
         if (!userId) {
             return;
         }
-        database.readCard(userId, (cards) => {
+         const stopSync = database.readCard(userId, (cards) => {
             setCards(cards);
         });
+        return () => stopSync();
     },[userId]);
 
     return (
