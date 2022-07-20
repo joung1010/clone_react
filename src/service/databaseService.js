@@ -20,7 +20,7 @@ class DatabaseService {
              const value = snapshot.val();
              value && setCarad(value);
          }));
-         return () => stopSync();
+         return  stopSync;
     }
 
 }
