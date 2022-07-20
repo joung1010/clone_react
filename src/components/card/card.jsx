@@ -50,7 +50,7 @@ const Card = ({authService,FileInput,database}) => {
          const stopSync = database.readCard(userId, (cards) => {
             setCards(cards);
         });
-        return () => stopSync();
+        return () => stopSync(); 
     },[userId]);
 
     return (
