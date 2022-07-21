@@ -42,7 +42,7 @@ const Card = ({authService,FileInput,database}) => {
                 navigate("/");
             }
         });
-    });
+    },[userId,authService,navigate]);
     useEffect( () => {
         if (!userId) {
             return;
@@ -51,7 +51,7 @@ const Card = ({authService,FileInput,database}) => {
             setCards(cards);
         });
         return () => stopSync(); 
-    },[userId]);
+    },[userId,database]);
 
     return (
         <div className={styles.card}>

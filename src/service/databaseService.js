@@ -1,8 +1,8 @@
-import {getDatabase, ref, set, remove,onValue , off} from "firebase/database";
+import { ref, set, remove,onValue } from "firebase/database";
 
 class DatabaseService {
-    constructor(app) {
-        this.database = getDatabase(app);
+    constructor(firebaseDatabase) {
+        this.database = firebaseDatabase;
     }
 
     writeCard(userId, card) {
