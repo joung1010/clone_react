@@ -12,28 +12,29 @@ const Card = ({authService,FileInput,database}) => {
     const [userId,setUserId] = useState(state.userId);
     const [cards,setCards] = useState({});
 
-    const deleteCard = useCallback((card) => {
+    const deleteCard = (card) => {
         setCards(cards => {
             const cardItemn = {...cards}
             delete cardItemn[card.id];
             return cardItemn;
         });
-        database.removeCard(userId,card);
-    },[cards]);
+        database.removeCard(userId, card);
+    };
 
-    const createOrUpdateCard = useCallback( (card) => {
+    const createOrUpdateCard = (card) => {
         setCards(cards => {
             const cardItemn = {...cards}
             cardItemn[card.id] = card;
             return cardItemn;
         });
-        database.writeCard(userId,card);
-    },[cards]);
+        database.writeCard(userId, card);
+    };
 
-    const handleLogout = () => {
+    const handleLogout = useCallback(() => {
         authService.logout()
             .then(() => navigate("/"));
-    };
+    },[authService]);
+
     useEffect(() => {
         authService.onAuthStateChanged((user) => {
             if (user) {
@@ -43,6 +44,7 @@ const Card = ({authService,FileInput,database}) => {
             }
         });
     },[userId,authService,navigate]);
+
     useEffect( () => {
         if (!userId) {
             return;

@@ -1,12 +1,11 @@
-import React from 'react';
+import React,{memo} from 'react';
 import styles from './cardItem.module.css';
 
 const DEFAULT_IMG = 'images/default_logo.png'
-const CardItem = ({card}) => {
-
+const CardItem = memo(({card}) => {
     const {name, company, role, email, description, color, fileName, fileURL} = card;
     const url = fileURL || DEFAULT_IMG;
-    return(
+    return (
         <li className={`${styles.card} ${getColor(color)}`}>
             <img className={styles.avatar} src={url} alt={fileName}/>
             <div className={styles.userInfo}>
@@ -18,7 +17,7 @@ const CardItem = ({card}) => {
             </div>
         </li>
     );
-}
+});
 
 function getColor(color){
     switch (color) {

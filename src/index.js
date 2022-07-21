@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.module.css';
 import App from './app';
@@ -15,9 +15,9 @@ const api = axios.create({
     baseURL:'https://api.cloudinary.com/v1_1'
 });
 const uploadService = new UploadService(api);
-const FileInput = props => (
+const FileInput = memo(props => (
     <ImageFileInput {...props} uploadService={uploadService}/>
-);
+));
 
 const database =new DatabaseService(firebaseDatabase);
  
