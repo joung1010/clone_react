@@ -1,0 +1,127 @@
+/*
+상대 단위
+상대(relative) 단위란 고정되지 않고 어떤 기준에 따라서 유동적으로 바뀔 수 있는 길이를 나타내는 단위입니다.
+ 본 포스팅에서 다룰 em과 rem을 포함해 %, vw, vh 등이 대표적인 CSS의 상대 단위입니다.
+
+반면 절대(absolute) 단위는 어떤 상황에서든 항상 고정된 길이를 나타내는 단위입니다.
+대표적으로 예전부터 현재까지 많이 사용되는 px와 pt를 들 수 있고, cm나 in와 같은 실생활에서 많이 사용되는 단위들도 이 절대 단위에 범주에 속합니다.
+
+em 과 rem 공통점
+em과 rem은 둘 다 CCS의 font-size 속성 값에 비례해서 결정되는 상대 단위입니다. 예를 들어,
+font-size: 16px인 경우, 상대 단위는 브라우저에 의해서 다음과 같이 계산됩니다.
+0.5em = 16 px x 0.5 = 8px
+1em = 16 px x 1 = 16px
+2em = 16 px x 2 = 32px
+3em = 16 px x 3 = 48px
+
+em 과 rem 차이점
+em과 rem 단위의 기준은 font-size 속성 값이라고 했는데,
+정확히 어디에 있는 font-size 속성 값인지에 따라 차이가 발생합니다
+
+em의 경우, 해당 단위가 사용되고 있는 요소의 font-size 속성 값이 기준이 됩니다.
+반면에 rem에서 r은 root, 즉 최상위 요소를font-size 속성 값 의미합니다
+
+*/
+* {
+    box-sizing: border-box;
+}
+button {
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+
+.navbar {
+    font-size: 2rem;
+    padding: 1em;
+    background-color: blanchedalmond;
+}
+
+.navbar-count {
+    display: inline-block;
+    text-align: center;
+    font-size: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin-left: 0.2em;
+    margin-right: 0.5em;
+    background-color: green;
+    color: white;
+    border-radius: 50%;
+}
+
+.navbar-logo {
+    color: green;
+    margin: 0.5rem;
+
+}
+
+.habits {
+    padding: 0.5em;
+    padding-top: 2em;
+}
+
+.add-input {
+    font-size: 2rem;
+}
+
+.add-input {
+    margin-right: 0.2em;
+}
+
+.add-button {
+    height: 100%;
+    font-size: 1.5rem;
+    padding: 0.3em 0.5em;
+    background-color: green;
+    color: white;
+    position: relative;
+    bottom: 2px;
+}
+
+.habit {
+    font-size: 2.5rem;
+    padding: 0.5em;
+    list-style: none;
+}
+.habit-count {
+    display: inline-block;
+    text-align: center;
+    font-size: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin-left: 0.2em;
+    margin-right: 0.5em;
+    background-color: darkseagreen;
+    color: white;
+    border-radius: 50%;
+}
+
+.habit-button {
+    font-size: 2.5rem;
+    margin: 0.01em;
+    background-color: transparent;
+}
+
+.habit-button:hover {
+    opacity: 0.8;
+}
+
+.habit-increase, .habit-decrease {
+    color: goldenrod;
+}
+
+.habit-delete {
+    font-size: 2rem;
+    vertical-align: center;
+    color: darkred;
+}
+.habits-reset {
+    font-size: 1.5rem;
+    padding: 0.2em 1em;
+    background-color: green;
+    color: white;
+}
