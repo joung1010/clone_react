@@ -1,0 +1,17 @@
+@value makerGreen from '../../common/color.css';
+.maker {
+    flex-basis: 50%;
+    overflow-y: auto;
+}
+.title {
+    width: 100%;
+    text-align: center;
+    color: makerGreen;
+    margin-bottom: 1em;
+}
+.cards {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 0.5em 2em;
+}
